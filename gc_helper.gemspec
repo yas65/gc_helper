@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["yasumura@f-plat.com"]
   s.homepage    = ""
   s.summary     = %q{Simply wrap Google Calendar API}
-  s.description = %q{currentry this gem provides only adding calendar event.}
+  s.description = %q{Currentry this gem provides only adding calendar event.}
 
   s.rubyforge_project = "gc_helper"
 

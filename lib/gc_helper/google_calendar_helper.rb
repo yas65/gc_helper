@@ -6,14 +6,15 @@ module GoogleCalendarHelper
     details = options[:details] ? options[:details] : ""
     if from.respond_to? :strftime
       if to.respond_to? :strftime
-        dates = "#{from.strftime("%Y%m%dT%H%M%SZ")}/#{to.strftime("%Y%m%dT%H%M%SZ")}"
+        dates = "#{from.getutc.strftime("%Y%m%dT%H%M%SZ")}/#{to.getutc.strftime("%Y%m%dT%H%M%SZ")}"
       else
-        dates = "#{from.strftime("%Y%m%dT%H%M%SZ")}/#{from.strftime("%Y%m%dT%H%M%SZ")}"
+        dates = "#{from.getutc.strftime("%Y%m%dT%H%M%SZ")}/#{(from + 3600).getutc.strftime("%Y%m%dT%H%M%SZ")}"
       end
     else
       dates = ''
     end
-    link_to link_name,"#{GOOGLE_CAL_URL}/#{ACTION}?action=TEMPLATE&text=#{title}&dates=#{dates}&details=#{details}&location=#{location}&trp=false&sprop=&sprop=name:"
+    link_to(link_name,
+    "#{GOOGLE_CAL_URL}/#{ACTION}?action=TEMPLATE&text=#{title}&dates=#{dates}&details=#{details}&location=#{location}&trp=false&sprop=&sprop=name:",:target=>"_blank")
   end
 end
 
